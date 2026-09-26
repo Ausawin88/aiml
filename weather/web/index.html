@@ -66,7 +66,6 @@ header.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-cont
 .brand p { color: var(--ink-2); }
 .brand .en { font-family: var(--display); font-weight: 500; font-size: .5em; color: var(--river); letter-spacing: .02em; }
 .stamp { font-family: var(--mono); font-size: .8rem; color: var(--ink-2); text-align: right; }
-.sample { display: inline-block; background: var(--watch-bg); color: var(--ink); border: 1px dashed var(--watch); border-radius: 4px; padding: 2px 8px; font-size: .78rem; }
 
 /* hotlines */
 .hotlines { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
@@ -98,39 +97,42 @@ header.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-cont
 .grid-2 { display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px; }
 @media (max-width: 860px) { .grid-2 { grid-template-columns: 1fr; } }
 
-/* river path */
-.river { overflow-x: auto; }
-.river svg { display: block; min-width: 640px; width: 100%; height: auto; }
-.river text { fill: var(--ink); font-family: var(--body); }
-.river .sub { fill: var(--ink-2); font-size: 11px; }
-.river .flow { font-family: var(--mono); font-size: 13px; font-weight: 500; }
-.river .eta { fill: var(--river); font-family: var(--mono); font-size: 11px; }
+/* clickable tiles and link cards */
+a.stat { color: inherit; text-decoration: none; }
+a.stat:hover { border-color: var(--river); }
+.stat .v.link { font-family: var(--display); font-size: 1.15rem; font-weight: 600; color: var(--river); }
+.stat .go { font-size: .8rem; color: var(--river); font-weight: 500; }
+.links { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+.linkcard { display: grid; gap: 2px; align-content: start; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: inherit; text-decoration: none; }
+.linkcard:hover { border-color: var(--river); }
+.linkcard b { font-weight: 600; }
+.linkcard span { font-size: .82rem; color: var(--ink-2); }
+.linkcard em { font-style: normal; font-size: .82rem; color: var(--river); font-weight: 500; margin-top: 4px; }
+.linkcard .warnnote { color: var(--warn); }
+.src { font-size: .78rem; color: var(--ink-3); }
 
-/* dam table */
-.table-wrap { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
-th { text-align: left; font-weight: 500; color: var(--ink-3); font-size: .75rem; letter-spacing: .04em; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-td { padding: 9px 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
-td.r, th.r { text-align: right; }
-tr:last-child td { border-bottom: 0; }
-.bar { position: relative; height: 8px; background: var(--surface-2); border-radius: 4px; min-width: 80px; }
-.bar i { position: absolute; inset: 0 auto 0 0; border-radius: 4px; background: var(--sev); }
-.bar b { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); left: 100%; }
-.spark { display: block; }
-
-/* rain chart */
-.chart svg { display: block; width: 100%; height: auto; }
+/* live rain */
+.picker { display: flex; align-items: center; gap: 8px; font-size: .85rem; color: var(--ink-2); }
+.picker select { font: inherit; font-size: .88rem; padding: 5px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); }
+.rain-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px 16px; margin-bottom: 12px; }
+.rain-stats > div { display: grid; gap: 4px; }
+.rain-stats .v { font-family: var(--mono); font-size: 1.45rem; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.rain-stats .v small { font-size: .8rem; color: var(--ink-2); }
+.chart { overflow-x: auto; }
+.chart svg { display: block; width: 100%; min-width: 520px; height: auto; }
 .chart text { fill: var(--ink-3); font-family: var(--mono); font-size: 10px; }
-.districts { display: grid; gap: 6px; margin-top: 14px; }
-.district { display: grid; grid-template-columns: 7.5em 1fr 4.5em; gap: 10px; align-items: center; font-size: .86rem; }
-.district .bar i { background: var(--river); }
+.chart .cap { fill: var(--ink-2); font-family: var(--body); font-size: 11px; }
+.chart .msg { fill: var(--ink-2); font-family: var(--body); font-size: 13px; }
 
-/* roads */
-.roads { list-style: none; margin: 0; padding: 0; display: grid; }
-.roads li { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
-.roads li:last-child { border-bottom: 0; }
-.roads .depth { font-family: var(--mono); font-size: .9rem; text-align: right; }
-.roads .where { font-size: .8rem; color: var(--ink-2); }
+/* river path */
+.river-wrap { overflow-x: auto; }
+.river-wrap svg { display: block; min-width: 640px; width: 100%; height: auto; }
+.river-wrap text { fill: var(--ink); font-family: var(--body); }
+.river-wrap .sub { fill: var(--ink-2); font-size: 11px; }
+.dams { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .88rem; margin-block: 6px 12px; }
+.dams span { color: var(--ink-2); }
+.dams b { color: var(--ink); font-weight: 600; }
+.subhead { font-size: .95rem; margin-top: 18px; }
 
 /* steps */
 .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; counter-reset: s; }
@@ -166,7 +168,8 @@ footer { font-size: .8rem; color: var(--ink-3); border-top: 1px solid var(--line
 .sky { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 @media (max-width: 900px) { .sky { grid-template-columns: 1fr; } }
 .scope { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; }
-.screen { position: relative; background: #071217; aspect-ratio: 4 / 3; max-width: 100%; }
+.screen { display: block; position: relative; background: #071217; aspect-ratio: 4 / 3; max-width: 100%; }
+a.screen:hover .tag, a.screen:focus-visible .tag { background: #1b6f8a; color: #fff; border-color: #1b6f8a; }
 .screen canvas { display: block; width: 100%; height: 100%; }
 .screen .tag { position: absolute; left: 10px; top: 10px; font-family: var(--mono); font-size: .72rem; color: #b8d4dc; background: #071217cc; border: 1px solid #2a4a55; padding: 2px 8px; border-radius: 4px; }
 .scope-body { padding: 14px 16px; display: grid; gap: 6px; align-content: start; }
@@ -187,8 +190,7 @@ footer { font-size: .8rem; color: var(--ink-3); border-top: 1px solid var(--line
       <p>เช็กฝน ดูน้ำ หาทางเลี่ยง ก่อนออกจากบ้าน รวมไว้ที่เดียว</p>
     </div>
     <div class="stamp">
-      <span class="sample">ต้นแบบ · ภาพและตัวเลขเป็นตัวอย่าง</span><br>
-      อัปเดตล่าสุด <span class="num" id="stamp"></span>
+      เปิดเมื่อ <span class="num" id="stamp"></span>
     </div>
   </header>
 
@@ -203,12 +205,11 @@ footer { font-size: .8rem; color: var(--ink-3); border-top: 1px solid var(--line
       <section aria-labelledby="h-sky">
         <div class="section-head">
           <div><h2 id="h-sky">มองจากฟ้า</h2>
-          <p class="muted" style="font-size:.85rem">ลม ฝน และเมฆ ดูภาพจริงได้จากลิงก์ใต้แต่ละช่อง</p></div>
-          <span class="sample">ภาพประกอบ ไม่ใช่ภาพจริง</span>
+          <p class="muted" style="font-size:.85rem">ลม ฝน และเมฆ กดที่ภาพเพื่อเปิดดูข้อมูลล่าสุดจากต้นทาง</p></div>
         </div>
         <div class="sky">
           <article class="scope">
-            <div class="screen"><canvas id="cv-globe" width="480" height="360" aria-hidden="true"></canvas><span class="tag">ลูกโลก · ลมและฝน</span></div>
+            <a class="screen" href="https://www.windy.com" target="_blank" rel="noopener" aria-label="เปิดแผนที่ลมและฝนใน Windy"><canvas id="cv-globe" width="480" height="360" aria-hidden="true"></canvas><span class="tag">เปิดแผนที่ลมและฝน ↗</span></a>
             <div class="scope-body">
               <h3>ลมและฝนทั้งภูมิภาค</h3>
               <p>ดูพายุและร่องมรสุมที่กำลังเข้าไทยล่วงหน้าหลายวัน</p>
@@ -220,7 +221,7 @@ footer { font-size: .8rem; color: var(--ink-3); border-top: 1px solid var(--line
             </div>
           </article>
           <article class="scope">
-            <div class="screen"><canvas id="cv-radar" width="480" height="360" aria-hidden="true"></canvas><span class="tag">เรดาร์ฝน</span></div>
+            <a class="screen" href="https://weather.tmd.go.th" target="_blank" rel="noopener" aria-label="เปิดเรดาร์ฝนกรมอุตุนิยมวิทยา"><canvas id="cv-radar" width="480" height="360" aria-hidden="true"></canvas><span class="tag">เปิดเรดาร์ฝน ↗</span></a>
             <div class="scope-body">
               <h3>เรดาร์ฝน</h3>
               <p>กลุ่มฝนที่กำลังตกและทิศทางที่เคลื่อนตัวใน 1–3 ชั่วโมงข้างหน้า</p>
@@ -232,7 +233,7 @@ footer { font-size: .8rem; color: var(--ink-3); border-top: 1px solid var(--line
             </div>
           </article>
           <article class="scope">
-            <div class="screen"><canvas id="cv-sat" width="480" height="360" aria-hidden="true"></canvas><span class="tag">ภาพดาวเทียม</span></div>
+            <a class="screen" href="https://flood.gistda.or.th" target="_blank" rel="noopener" aria-label="เปิดภาพดาวเทียมน้ำท่วม GISTDA"><canvas id="cv-sat" width="480" height="360" aria-hidden="true"></canvas><span class="tag">เปิดภาพดาวเทียม ↗</span></a>
             <div class="scope-body">
               <h3>ภาพดาวเทียม</h3>
               <p>เมฆปกคลุมและพื้นที่น้ำท่วมที่ตรวจจากดาวเทียม</p>
@@ -258,39 +259,35 @@ footer { font-size: .8rem; color: var(--ink-3); border-top: 1px solid var(--line
 
     <div class="view" data-view="dash" hidden>
       <section aria-labelledby="h-now">
-        <div class="section-head"><h2 id="h-now">สถานการณ์ตอนนี้</h2><span class="sample">ข้อมูลตัวอย่าง</span></div>
+        <div class="section-head"><h2 id="h-now">สถานการณ์ตอนนี้</h2><span class="muted" style="font-size:.85rem">กดที่ช่องเพื่อดูค่าล่าสุดจากหน่วยงาน</span></div>
         <div class="status" id="status"></div>
       </section>
 
-      <section class="panel river" aria-labelledby="h-river">
+      <section class="panel" aria-labelledby="h-rain">
         <div class="section-head">
-          <div><h2 id="h-river">น้ำเหนือจะถึงกรุงเทพฯ เมื่อไหร่</h2>
-          <p class="muted" style="font-size:.85rem">อัตราการไหลตามสถานีหลักบนแม่น้ำเจ้าพระยา และเวลาเดินทางของน้ำโดยประมาณ</p></div>
-          <span class="sample">ข้อมูลตัวอย่าง</span>
+          <div><h2 id="h-rain">ฝน 24 ชม. ที่ผ่านมาและข้างหน้า</h2>
+          <p class="src" id="rain-src">กำลังโหลดข้อมูล…</p></div>
+          <label class="picker" for="place">พื้นที่ <select id="place"></select></label>
         </div>
-        <svg id="river" viewBox="0 0 1000 190" role="img" aria-label="แผนผังสถานีแม่น้ำเจ้าพระยาจากนครสวรรค์ถึงกรุงเทพฯ"></svg>
+        <div class="rain-stats" id="rain-stats"></div>
+        <div class="chart"><svg id="rain" viewBox="0 0 720 200" role="img" aria-label="กราฟปริมาณฝนรายชั่วโมง 24 ชั่วโมงที่ผ่านมาและ 24 ชั่วโมงข้างหน้า"></svg></div>
+        <p class="src" style="margin-top:8px">ข้อมูลจากแบบจำลอง <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a> · ค่าวัดจากสถานีจริงดูได้ที่ <a href="https://weather.bangkok.go.th/rain" target="_blank" rel="noopener">ระบบวัดฝน กทม.</a> · ระดับฝนตามเกณฑ์กรมอุตุนิยมวิทยา</p>
       </section>
 
-      <div class="grid-2">
-        <section class="panel" aria-labelledby="h-dam">
-          <div class="section-head"><h2 id="h-dam">เขื่อนหลักลุ่มเจ้าพระยา</h2><span class="sample">ข้อมูลตัวอย่าง</span></div>
-          <div class="table-wrap"><table id="dams">
-            <thead><tr><th>เขื่อน</th><th>% ความจุ</th><th class="r">น้ำไหลเข้า</th><th class="r">ระบาย</th><th>14 วัน</th></tr></thead>
-            <tbody></tbody>
-          </table></div>
-          <p class="muted" style="font-size:.78rem;margin-top:10px">หน่วย: ล้าน ลบ.ม./วัน · เส้นดำ = ระดับกักเก็บปกติ (100%)</p>
-        </section>
+      <section class="panel" aria-labelledby="h-river">
+        <div class="section-head">
+          <div><h2 id="h-river">น้ำเหนือไหลผ่านสถานีไหนบ้าง</h2>
+          <p class="muted" style="font-size:.85rem">สถานีหลักบนแม่น้ำเจ้าพระยา จากต้นน้ำถึงกรุงเทพฯ ดูระดับน้ำและอัตราการไหลล่าสุดได้ใน ThaiWater</p></div>
+        </div>
+        <div class="river-wrap"><svg id="river" viewBox="0 0 1000 120" role="img" aria-label="แผนผังสถานีแม่น้ำเจ้าพระยาจากนครสวรรค์ถึงกรุงเทพฯ"></svg></div>
+        <h3 class="subhead">เขื่อนหลักลุ่มเจ้าพระยา</h3>
+        <div class="dams" id="dams"></div>
+        <div class="links" id="water-links"></div>
+      </section>
 
-        <section class="panel chart" aria-labelledby="h-rain">
-          <div class="section-head"><h2 id="h-rain">ฝนกรุงเทพฯ 24 ชม.</h2><span class="sample">ข้อมูลตัวอย่าง</span></div>
-          <svg id="rain" viewBox="0 0 420 170" role="img" aria-label="กราฟปริมาณฝนรายชั่วโมง"></svg>
-          <div class="districts" id="districts"></div>
-        </section>
-      </div>
-
-      <section class="panel" aria-labelledby="h-roads">
-        <div class="section-head"><h2 id="h-roads">ถนนมีน้ำท่วมขัง</h2><span class="sample">ข้อมูลตัวอย่าง</span></div>
-        <ul class="roads" id="roads"></ul>
+      <section aria-labelledby="h-roads">
+        <div class="section-head"><h2 id="h-roads">ถนนและการเดินทาง</h2></div>
+        <div class="links" id="roads"></div>
       </section>
     </div>
 
@@ -312,7 +309,7 @@ footer { font-size: .8rem; color: var(--ink-3); border-top: 1px solid var(--line
   </section>
 
   <footer>
-    ต้นแบบหน้าเว็บ · ลิงก์ทั้งหมดพาไปยังเว็บไซต์ต้นทาง · ภาพในหน้าแรกเป็นภาพประกอบ และตัวเลขใน Dashboard เป็นข้อมูลตัวอย่าง ยังไม่ได้ดึงจากแหล่งจริง
+    ข้อมูลฝนจากแบบจำลอง Open-Meteo · ข้อมูลอื่นกดลิงก์ไปดูที่หน่วยงานต้นทาง · ภาพในหน้าแรกเป็นภาพกราฟิก กดเพื่อเปิดภาพจริง
   </footer>
 </div>
 
@@ -347,38 +344,55 @@ const TOOLS = [
   { cat: "road", name: "ถนนที่ควรเลี่ยง", org: "รวบรวมโดยผู้ใช้", desc: "รายการถนนที่ควรหลีกเลี่ยงช่วงน้ำท่วม", links: [["เปิดรายการ", "https://claude.ai/artifact/N6umcENfSgoY6GMkhVKwZs"]] },
 ];
 
-// ---- sample data (not live) ----
-const STATUS = [
-  { k: "ระดับน้ำเจ้าพระยา สะพานพุทธ", v: "+1.62", u: "ม.รทก.", sev: "watch", s: "เฝ้าระวัง", d: "ตลิ่งป้องกัน +2.80 ม." },
-  { k: "ระบายท้ายเขื่อนเจ้าพระยา", v: "1,850", u: "ลบ.ม./วิ", sev: "warn", s: "เตือนภัย", d: "เพิ่มขึ้น 120 จากเมื่อวาน" },
-  { k: "ฝนสะสม กทม. 24 ชม.", v: "68", u: "มม.", sev: "watch", s: "ฝนหนัก", d: "สูงสุดที่เขตบางเขน" },
-  { k: "ถนนน้ำท่วมขัง กทม.", v: "7", u: "จุด", sev: "normal", s: "รถเล็กผ่านได้ส่วนใหญ่", d: "ลดลง 3 จุดจากเช้านี้" },
+const PLACES = [
+  ["กรุงเทพฯ", 13.7563, 100.5018],
+  ["นนทบุรี", 13.8621, 100.5144],
+  ["ปทุมธานี", 14.0208, 100.5250],
+  ["พระนครศรีอยุธยา", 14.3532, 100.5689],
+  ["นครสวรรค์", 15.7047, 100.1372],
+  ["เชียงใหม่", 18.7883, 98.9853],
+  ["ขอนแก่น", 16.4322, 102.8236],
+  ["หาดใหญ่", 7.0084, 100.4747],
+];
+
+const LINK = {
+  thaiwater: "https://www.thaiwater.net/new4all",
+  twaMap: "https://twa.thaiwater.net/th/map/basic",
+  floodHub: "https://sites.research.google/floods",
+  bmaRain: "https://weather.bangkok.go.th/rain",
+  bmaFlood: "https://weather.bangkok.go.th/flood/",
+  klong: "https://weather.bangkok.go.th/KlongMap",
+};
+
+const STATUS_LINKS = [
+  { k: "ระดับน้ำแม่น้ำเจ้าพระยา", href: LINK.thaiwater, d: "ระดับน้ำและอัตราการไหลตามสถานี · ThaiWater" },
+  { k: "น้ำท่วมถนน กทม.", href: LINK.bmaFlood, d: "จุดวัดระดับน้ำบนถนน · สำนักการระบายน้ำ" },
+  { k: "การไหลของคลอง กทม.", href: LINK.klong, d: "คลองไหนระบายทัน · ถ้าเปิดไม่ขึ้นให้รีเฟรช" },
 ];
 
 const STATIONS = [
-  { name: "C.2 นครสวรรค์", sub: "จุดวัดน้ำเหนือ", flow: 2320, eta: null },
-  { name: "เขื่อนเจ้าพระยา", sub: "ชัยนาท · ระบาย", flow: 1850, eta: "~12–18 ชม." },
-  { name: "อยุธยา", sub: "C.35 บางไทร", flow: 1920, eta: "~1 วัน" },
-  { name: "ปทุมธานี", sub: "ท่าน้ำนนท์", flow: 2010, eta: "~12 ชม." },
-  { name: "กรุงเทพฯ", sub: "สะพานพุทธ", flow: 2060, eta: "~6–8 ชม." },
+  { name: "C.2 นครสวรรค์", sub: "จุดวัดน้ำเหนือ" },
+  { name: "เขื่อนเจ้าพระยา", sub: "ชัยนาท" },
+  { name: "C.35 บางไทร", sub: "พระนครศรีอยุธยา" },
+  { name: "ท่าน้ำนนท์", sub: "นนทบุรี" },
+  { name: "สะพานพุทธ", sub: "กรุงเทพฯ" },
 ];
 
-const DAMS = [
-  { name: "ภูมิพล", pct: 71, inflow: 38.2, out: 22.0, trend: [66,66,67,67,68,68,69,69,69,70,70,70,71,71] },
-  { name: "สิริกิติ์", pct: 84, inflow: 41.5, out: 28.3, trend: [76,77,77,78,79,79,80,81,81,82,83,83,84,84] },
-  { name: "แควน้อยบำรุงแดน", pct: 93, inflow: 6.1, out: 5.4, trend: [88,88,89,89,90,90,91,91,92,92,92,93,93,93] },
-  { name: "ป่าสักชลสิทธิ์", pct: 102, inflow: 27.9, out: 26.1, trend: [90,92,93,95,96,97,98,99,99,100,101,101,102,102] },
+const DAMS = [["ภูมิพล", "ตาก"], ["สิริกิติ์", "อุตรดิตถ์"], ["แควน้อยบำรุงแดน", "พิษณุโลก"], ["ป่าสักชลสิทธิ์", "ลพบุรี"]];
+
+const WATER_LINKS = [
+  { t: "ThaiWater One Map", d: "ปริมาณน้ำในเขื่อน การระบาย ระดับน้ำตามสถานี", href: LINK.thaiwater },
+  { t: "แผนที่หลายชั้นข้อมูล", d: "ซ้อนชั้นฝน ระดับน้ำ และเขื่อนบนแผนที่", href: LINK.twaMap },
+  { t: "Google Flood Hub", d: "พยากรณ์น้ำล้นตลิ่งล่วงหน้าหลายวัน", href: LINK.floodHub },
 ];
 
-const RAIN = [0,0,0,0,0,1,2,0,0,0,0,0,1,3,6,14,19,11,5,2,1,0,0,0];
-const DISTRICTS = [["บางเขน",68],["ดอนเมือง",61],["จตุจักร",54],["หลักสี่",49],["ลาดพร้าว",41]];
-
-const ROADS = [
-  { road: "ถ.วิภาวดีรังสิต ขาออก", where: "หน้า ม.เกษตรศาสตร์", cm: 22, sev: "warn", s: "รถเล็กเลี่ยง" },
-  { road: "ถ.งามวงศ์วาน", where: "แยกบางเขน", cm: 15, sev: "watch", s: "ผ่านได้ช้า" },
-  { road: "ถ.พหลโยธิน", where: "หน้า ร.ร.สารวิทยา", cm: 12, sev: "watch", s: "ผ่านได้ช้า" },
-  { road: "ถ.แจ้งวัฒนะ", where: "แยกหลักสี่", cm: 8, sev: "normal", s: "ผ่านได้" },
-  { road: "ถ.ลาดพร้าว", where: "ซอย 101", cm: 5, sev: "normal", s: "ผ่านได้" },
+const ROAD_LINKS = [
+  { t: "น้ำท่วมถนน กทม.", d: "ระดับน้ำบนถนนตามจุดตรวจวัด", href: LINK.bmaFlood },
+  { t: "CCTV กทม.", d: "ดูกล้องก่อนออกเดินทาง", href: "https://cpudapp.bangkok.go.th/bmatraffic" },
+  { t: "HDMS กรมทางหลวง", d: "CCTV และพิกัดน้ำท่วมบนทางหลวง", href: "https://hdms.doh.go.th/dashboard" },
+  { t: "Longdo Traffic", d: "สภาพจราจรและเหตุการณ์บนถนน", href: "https://traffic.longdo.com" },
+  { t: "ถนนที่ควรเลี่ยง", d: "รายการถนนที่ควรหลีกเลี่ยงช่วงน้ำท่วม", href: "https://claude.ai/artifact/N6umcENfSgoY6GMkhVKwZs" },
+  { t: "การไหลของคลอง กทม.", d: "แผนที่การไหลในคลองสายหลัก", href: LINK.klong, note: "ล่มบ่อย กดรีเฟรชหลายครั้ง" },
 ];
 
 const $ = (s) => document.querySelector(s);
@@ -405,97 +419,126 @@ $("#hotlines").addEventListener("click", (e) => {
   navigator.clipboard?.writeText(b.dataset.copy).then(done, () => { b.textContent = b.dataset.copy; });
 });
 
-// status tiles
-$("#status").innerHTML = STATUS.map((s) => `
-  <div class="stat s-${s.sev}">
-    <span class="label" style="text-transform:none;letter-spacing:0">${esc(s.k)}</span>
-    <span class="v">${s.v} <small>${esc(s.u)}</small></span>
-    <span class="pill">${esc(s.s)}</span>
-    <span class="muted" style="font-size:.8rem">${esc(s.d)}</span>
-  </div>`).join("");
+// link cards
+const card = (l) => `<a class="linkcard" href="${l.href}" target="_blank" rel="noopener"><b>${esc(l.t)}</b><span>${esc(l.d)}</span>${l.note ? `<span class="warnnote">${esc(l.note)}</span>` : ""}<em>เปิดดู ↗</em></a>`;
+$("#water-links").innerHTML = WATER_LINKS.map(card).join("");
+$("#roads").innerHTML = ROAD_LINKS.map(card).join("");
+$("#dams").innerHTML = DAMS.map(([n, p]) => `<span><b>${esc(n)}</b> ${esc(p)}</span>`).join("");
 
-// river path
+// river path (stations only; live values are on ThaiWater)
 (function drawRiver() {
-  const svg = $("#river"), W = 1000, x0 = 70, x1 = 930, y = 78;
-  const step = (x1 - x0) / (STATIONS.length - 1);
-  const maxF = 3000; // channel capacity scale for stroke width
-  let out = "";
+  const x0 = 80, x1 = 920, y = 40, step = (x1 - x0) / (STATIONS.length - 1);
+  let out = `<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="var(--river)" stroke-opacity=".35" stroke-width="10" stroke-linecap="round"/>`;
   for (let i = 0; i < STATIONS.length - 1; i++) {
-    const a = x0 + i * step, b = a + step, f = STATIONS[i + 1].flow;
-    const w = 4 + (f / maxF) * 14;
-    out += `<line x1="${a}" y1="${y}" x2="${b}" y2="${y}" stroke="var(--river)" stroke-opacity=".35" stroke-width="${w}" stroke-linecap="round"/>`;
-    out += `<text class="eta" x="${(a + b) / 2}" y="${y - 16}" text-anchor="middle">${STATIONS[i + 1].eta} →</text>`;
+    const m = x0 + (i + 0.5) * step;
+    out += `<path d="M${m - 6} ${y - 5} L${m + 4} ${y} L${m - 6} ${y + 5}" fill="none" stroke="var(--river)" stroke-width="2"/>`;
   }
   STATIONS.forEach((s, i) => {
-    const x = x0 + i * step, sev = s.flow >= 2000 ? "var(--warn)" : s.flow >= 1500 ? "var(--watch)" : "var(--normal)";
-    out += `<circle cx="${x}" cy="${y}" r="11" fill="var(--surface)" stroke="${sev}" stroke-width="4"/>`;
+    const x = x0 + i * step;
+    out += `<a href="${LINK.thaiwater}" target="_blank" rel="noopener"><circle cx="${x}" cy="${y}" r="10" fill="var(--surface)" stroke="var(--river)" stroke-width="4"/>`;
     out += `<text x="${x}" y="${y + 34}" text-anchor="middle" font-size="14" font-weight="600">${esc(s.name)}</text>`;
-    out += `<text class="sub" x="${x}" y="${y + 52}" text-anchor="middle">${esc(s.sub)}</text>`;
-    out += `<text class="flow" x="${x}" y="${y + 74}" text-anchor="middle">${fmt(s.flow)} <tspan class="sub">ลบ.ม./วิ</tspan></text>`;
+    out += `<text class="sub" x="${x}" y="${y + 52}" text-anchor="middle">${esc(s.sub)}</text></a>`;
   });
-  out += `<text class="sub" x="${x0 - 50}" y="22">ต้นน้ำ</text><text class="sub" x="${x1 + 50}" y="22" text-anchor="end">ปลายน้ำ · อ่าวไทย</text>`;
-  svg.innerHTML = out;
+  out += `<text class="sub" x="${x0 - 60}" y="${y + 4}">ต้นน้ำ</text><text class="sub" x="${x1 + 60}" y="${y + 4}" text-anchor="end">อ่าวไทย</text>`;
+  $("#river").innerHTML = out;
 })();
 
-// sparkline helper
-function spark(vals, w = 90, h = 26) {
-  const lo = Math.min(...vals) - 1, hi = Math.max(...vals) + 1;
-  const px = (i) => (i / (vals.length - 1)) * (w - 4) + 2;
-  const py = (v) => h - 3 - ((v - lo) / (hi - lo)) * (h - 6);
-  const pts = vals.map((v, i) => `${px(i).toFixed(1)},${py(v).toFixed(1)}`).join(" ");
-  const last = vals.length - 1;
-  return `<svg class="spark" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true">
-    <polygon points="${px(0)},${h} ${pts} ${px(last)},${h}" fill="var(--river)" fill-opacity=".12"/>
-    <polyline points="${pts}" fill="none" stroke="var(--river)" stroke-width="1.5"/>
-    <circle cx="${px(last)}" cy="${py(vals[last])}" r="2.5" fill="var(--river)"/></svg>`;
+// status tiles: live rain first, then links to the agencies
+function renderStatus(rain) {
+  const r = rain ? rainLevel(rain.past24) : null;
+  const rainTile = `<a class="stat ${r ? "s-" + r.sev : ""}" href="${LINK.bmaRain}" target="_blank" rel="noopener">
+      <span class="label" style="text-transform:none;letter-spacing:0">ฝนสะสม 24 ชม. · ${esc(currentPlace()[0])}</span>
+      ${r ? `<span class="v">${rain.past24.toFixed(1)} <small>มม.</small></span><span class="pill">${r.label}</span>` : `<span class="v link">ดูค่าล่าสุด ↗</span>`}
+      <span class="muted" style="font-size:.8rem">${rain ? "แบบจำลอง Open-Meteo · กดดูค่าสถานีวัดฝน กทม." : "ระบบวัดฝน กทม."}</span>
+    </a>`;
+  $("#status").innerHTML = rainTile + STATUS_LINKS.map((s) => `
+    <a class="stat" href="${s.href}" target="_blank" rel="noopener">
+      <span class="label" style="text-transform:none;letter-spacing:0">${esc(s.k)}</span>
+      <span class="v link">ดูค่าล่าสุด ↗</span>
+      <span class="muted" style="font-size:.8rem">${esc(s.d)}</span>
+    </a>`).join("");
 }
 
-// dams
-const damSev = (p) => (p >= 100 ? "crit" : p >= 90 ? "warn" : p >= 80 ? "watch" : "normal");
-$("#dams tbody").innerHTML = DAMS.map((d) => `
-  <tr class="s-${damSev(d.pct)}">
-    <td style="font-weight:600">${esc(d.name)}</td>
-    <td><div style="display:flex;align-items:center;gap:10px">
-      <div class="bar" style="flex:1"><i style="width:${Math.min(d.pct, 100) / 1.1}%"></i><b style="left:${100 / 1.1}%"></b></div>
-      <span class="num" style="width:3.2em;text-align:right">${d.pct}%</span></div></td>
-    <td class="r num">${d.inflow.toFixed(1)}</td>
-    <td class="r num">${d.out.toFixed(1)}</td>
-    <td>${spark(d.trend)}</td>
-  </tr>`).join("");
+// TMD 24-hour rainfall classes
+function rainLevel(mm) {
+  if (mm < 0.1) return { label: "ไม่มีฝน", sev: "normal" };
+  if (mm <= 10) return { label: "ฝนเล็กน้อย", sev: "normal" };
+  if (mm <= 35) return { label: "ฝนปานกลาง", sev: "watch" };
+  if (mm <= 90) return { label: "ฝนหนัก", sev: "warn" };
+  return { label: "ฝนหนักมาก", sev: "crit" };
+}
 
-// rain chart
-(function drawRain() {
-  const W = 420, H = 170, L = 30, R = 8, T = 10, B = 24;
-  const max = 20, ticks = [0, 5, 10, 15, 20];
-  const bw = (W - L - R) / RAIN.length;
-  const ys = (v) => T + (H - T - B) * (1 - v / max);
+// live rain from Open-Meteo
+let placeIdx = 0;
+try { placeIdx = Math.max(0, Math.min(PLACES.length - 1, +localStorage.getItem("df-place") || 0)); } catch (e) {}
+const currentPlace = () => PLACES[placeIdx];
+$("#place").innerHTML = PLACES.map(([n], i) => `<option value="${i}"${i === placeIdx ? " selected" : ""}>${esc(n)}</option>`).join("");
+$("#place").addEventListener("change", (e) => {
+  placeIdx = +e.target.value;
+  try { localStorage.setItem("df-place", placeIdx); } catch (err) {}
+  loadRain();
+});
+
+const sum = (a) => a.reduce((t, v) => t + (v || 0), 0);
+
+async function loadRain() {
+  const [name, lat, lon] = currentPlace();
+  $("#rain-src").textContent = `กำลังโหลดข้อมูลฝน ${name}…`;
+  renderStatus(null);
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+    `&hourly=precipitation,precipitation_probability&current=temperature_2m&past_days=1&forecast_days=2&timezone=Asia%2FBangkok`;
+  try {
+    const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 12000);
+    const res = await fetch(url, { signal: ctl.signal });
+    clearTimeout(timer);
+    if (!res.ok) throw new Error(res.status);
+    const j = await res.json(), h = j.hourly;
+    const now = h.time.indexOf(j.current.time.slice(0, 13) + ":00");
+    if (now < 23) throw new Error("no current hour");
+    const past = h.precipitation.slice(now - 23, now + 1), next = h.precipitation.slice(now + 1, now + 25);
+    const times = h.time.slice(now - 23, now + 25), prob = h.precipitation_probability.slice(now + 1, now + 13);
+    const rain = { past24: sum(past), next6: sum(next.slice(0, 6)), next24: sum(next), prob: Math.max(0, ...prob.filter((v) => v != null)), temp: j.current.temperature_2m };
+    $("#rain-src").textContent = `${name} · อัปเดต ${j.current.time.slice(11, 16)} น.`;
+    const lvl = rainLevel(rain.past24), lvlNext = rainLevel(rain.next24);
+    $("#rain-stats").innerHTML = [
+      ["24 ชม. ที่ผ่านมา", rain.past24.toFixed(1), "มม.", lvl],
+      ["6 ชม. ข้างหน้า", rain.next6.toFixed(1), "มม.", null],
+      ["24 ชม. ข้างหน้า", rain.next24.toFixed(1), "มม.", lvlNext],
+      ["โอกาสฝน 12 ชม. ข้างหน้า", rain.prob, "%", null],
+    ].map(([k, v, u, l]) => `<div class="${l ? "s-" + l.sev : ""}"><span class="label" style="text-transform:none;letter-spacing:0">${k}</span><span class="v">${v} <small>${u}</small></span>${l ? `<span class="pill">${l.label}</span>` : ""}</div>`).join("");
+    drawRain(past.concat(next), times);
+    renderStatus(rain);
+  } catch (err) {
+    $("#rain-src").innerHTML = `โหลดข้อมูลฝนไม่ได้ ลองรีเฟรชหน้า หรือดูค่าจากสถานีที่ <a href="${LINK.bmaRain}" target="_blank" rel="noopener">ระบบวัดฝน กทม. ↗</a>`;
+    $("#rain-stats").innerHTML = "";
+    $("#rain").innerHTML = `<text class="msg" x="360" y="100" text-anchor="middle">ยังไม่มีข้อมูลฝน</text>`;
+  }
+}
+
+function drawRain(vals, times) {
+  const W = 720, H = 200, L = 34, R = 8, T = 24, B = 26, n = vals.length;
+  const top = Math.max(...vals.map((v) => v || 0));
+  const max = [2, 5, 10, 20, 50, 100, 200].find((m) => m >= top) || Math.ceil(top / 100) * 100;
+  const ys = (v) => T + (H - T - B) * (1 - v / max), bw = (W - L - R) / n;
   let out = "";
-  ticks.forEach((t) => {
-    out += `<line x1="${L}" x2="${W - R}" y1="${ys(t)}" y2="${ys(t)}" stroke="var(--line)" stroke-width="1"/>`;
+  [0, max / 2, max].forEach((t) => {
+    out += `<line x1="${L}" x2="${W - R}" y1="${ys(t)}" y2="${ys(t)}" stroke="var(--line)"/>`;
     out += `<text x="${L - 6}" y="${ys(t) + 3}" text-anchor="end">${t}</text>`;
   });
-  const peak = RAIN.indexOf(Math.max(...RAIN));
-  RAIN.forEach((v, i) => {
-    const x = L + i * bw + 1.5, h = ys(0) - ys(v);
-    if (v > 0) out += `<rect x="${x}" y="${ys(v)}" width="${bw - 3}" height="${h}" rx="1.5" fill="var(--river)" fill-opacity="${i === peak ? 1 : 0.55}"/>`;
-    if (i % 3 === 0) out += `<text x="${x + (bw - 3) / 2}" y="${H - 8}" text-anchor="middle">${String(i).padStart(2, "0")}</text>`;
+  vals.forEach((v, i) => {
+    const x = L + i * bw + 1, past = i < 24;
+    if (v > 0) out += `<rect x="${x}" y="${ys(v)}" width="${bw - 2}" height="${ys(0) - ys(v)}" rx="1.5" fill="var(--river)" fill-opacity="${past ? 0.9 : 0.35}"/>`;
+    if (i % 6 === 0) out += `<text x="${x + (bw - 2) / 2}" y="${H - 8}" text-anchor="middle">${times[i].slice(11, 16)}</text>`;
   });
-  out += `<text x="${L + peak * bw + bw / 2}" y="${ys(RAIN[peak]) - 4}" text-anchor="middle" style="fill:var(--ink)">${RAIN[peak]} มม.</text>`;
-  out += `<text x="${L}" y="${T - 1}" style="font-size:9px">มม./ชม.</text>`;
+  const nx = L + 24 * bw;
+  out += `<line x1="${nx}" x2="${nx}" y1="${T - 12}" y2="${ys(0)}" stroke="var(--ink)" stroke-dasharray="3 3"/>`;
+  out += `<text class="cap" x="${nx - 6}" y="${T - 2}" text-anchor="end">← ที่ผ่านมา</text><text class="cap" x="${nx + 6}" y="${T - 2}">ข้างหน้า →</text>`;
+  out += `<text x="${L}" y="${T - 12}">มม./ชม.</text>`;
   $("#rain").innerHTML = out;
-  const dmax = DISTRICTS[0][1];
-  $("#districts").innerHTML = `<span class="label" style="text-transform:none;letter-spacing:0">ฝนสะสมสูงสุดรายเขต</span>` + DISTRICTS.map(([n, v]) => `
-    <div class="district"><span>${esc(n)}</span><div class="bar"><i style="width:${(v / dmax) * 100}%"></i></div><span class="num" style="text-align:right">${v} มม.</span></div>`).join("");
-})();
+}
 
-// roads
-$("#roads").innerHTML = ROADS.map((r) => `
-  <li class="s-${r.sev}">
-    <span style="font-weight:600">${esc(r.road)}</span>
-    <span class="depth">${r.cm} ซม.</span>
-    <span class="where">${esc(r.where)}</span>
-    <span class="pill" style="justify-self:end">${esc(r.s)}</span>
-  </li>`).join("");
+renderStatus(null);
+loadRain();
 
 // directory
 let active = "all";
