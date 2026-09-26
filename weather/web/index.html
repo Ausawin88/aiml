@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ดูฝน Doo Foun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #eef2f3;
+  --surface: #ffffff;
+  --surface-2: #e3eaec;
+  --ink: #0f2a33;
+  --ink-2: #48626b;
+  --ink-3: #7c9199;
+  --line: #cfdadd;
+  --river: #1b6f8a;
+  --river-soft: #d3e7ee;
+  --normal: #2f8a4c;
+  --watch: #b98a00;
+  --warn: #d0621b;
+  --crit: #c2302b;
+  --normal-bg: #e1f1e5;
+  --watch-bg: #fbf1cf;
+  --warn-bg: #fbe3d3;
+  --crit-bg: #f8dcda;
+  --display: "Chakra Petch", "IBM Plex Sans Thai", system-ui, sans-serif;
+  --body: "IBM Plex Sans Thai", "Noto Sans Thai", "Leelawadee UI", Tahoma, system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0c1a1f; --surface: #12252c; --surface-2: #183039; --ink: #e3eef1; --ink-2: #a3bac1; --ink-3: #6f8b94; --line: #24414b;
+    --river: #5cb6d3; --river-soft: #173c49;
+    --normal: #5cc27b; --watch: #e2b93b; --warn: #f08a4b; --crit: #f0625c;
+    --normal-bg: #16352266; --watch-bg: #3d321066; --warn-bg: #45261466; --crit-bg: #4a1c1a66;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0c1a1f; --surface: #12252c; --surface-2: #183039; --ink: #e3eef1; --ink-2: #a3bac1; --ink-3: #6f8b94; --line: #24414b;
+  --river: #5cb6d3; --river-soft: #173c49;
+  --normal: #5cc27b; --watch: #e2b93b; --warn: #f08a4b; --crit: #f0625c;
+  --normal-bg: #16352266; --watch-bg: #3d321066; --warn-bg: #45261466; --crit-bg: #4a1c1a66;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; padding-inline: 16px; padding-block: 0 48px; }
+.wrap { max-width: 1160px; margin: 0 auto; display: grid; gap: 28px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.2; text-wrap: balance; margin: 0; }
+h2 { font-size: 1.35rem; font-weight: 600; }
+h3 { font-size: 1rem; font-weight: 600; }
+p { margin: 0; }
+a { color: var(--river); }
+:focus-visible { outline: 2px solid var(--river); outline-offset: 2px; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.label { font-size: .75rem; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; }
+.muted { color: var(--ink-2); }
+
+/* header */
+header.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; padding-block: 28px 4px; border-bottom: 2px solid var(--ink); }
+.brand { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.brand h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; letter-spacing: -.01em; }
+.brand p { color: var(--ink-2); }
+.brand .en { font-family: var(--display); font-weight: 500; font-size: .5em; color: var(--river); letter-spacing: .02em; }
+.stamp { font-family: var(--mono); font-size: .8rem; color: var(--ink-2); text-align: right; }
+.sample { display: inline-block; background: var(--watch-bg); color: var(--ink); border: 1px dashed var(--watch); border-radius: 4px; padding: 2px 8px; font-size: .78rem; }
+
+/* hotlines */
+.hotlines { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.hot { background: var(--surface); padding: 14px 16px; display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; align-items: center; }
+.hot.primary { background: var(--crit-bg); }
+.hot .n { font-family: var(--display); font-size: 1.9rem; font-weight: 700; line-height: 1; grid-row: span 2; }
+.hot .n small { font-size: 1rem; color: var(--ink-2); font-weight: 600; }
+.hot .who { font-weight: 600; font-size: .92rem; grid-column: 1; }
+.hot .what { font-size: .82rem; color: var(--ink-2); grid-column: 1; }
+.hot .acts { grid-column: 2; grid-row: 1 / span 3; display: flex; flex-direction: column; gap: 6px; }
+.hot .top-row { grid-column: 1; }
+.btn { font: inherit; font-size: .8rem; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 6px; padding: 4px 10px; cursor: pointer; text-decoration: none; text-align: center; white-space: nowrap; }
+.btn:hover { border-color: var(--river); color: var(--river); }
+
+/* status bar */
+.status { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 6px; border-top: 4px solid var(--sev, var(--line)); }
+.stat .v { font-family: var(--mono); font-size: 1.7rem; font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.stat .v small { font-size: .85rem; color: var(--ink-2); }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; font-weight: 600; padding: 2px 9px; border-radius: 999px; width: fit-content; background: var(--pbg); color: var(--pfg); }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.s-normal { --sev: var(--normal); --pbg: var(--normal-bg); --pfg: var(--normal); }
+.s-watch  { --sev: var(--watch);  --pbg: var(--watch-bg);  --pfg: var(--watch); }
+.s-warn   { --sev: var(--warn);   --pbg: var(--warn-bg);   --pfg: var(--warn); }
+.s-crit   { --sev: var(--crit);   --pbg: var(--crit-bg);   --pfg: var(--crit); }
+
+.section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; margin-bottom: 12px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px; min-width: 0; }
+.grid-2 { display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px; }
+@media (max-width: 860px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* river path */
+.river { overflow-x: auto; }
+.river svg { display: block; min-width: 640px; width: 100%; height: auto; }
+.river text { fill: var(--ink); font-family: var(--body); }
+.river .sub { fill: var(--ink-2); font-size: 11px; }
+.river .flow { font-family: var(--mono); font-size: 13px; font-weight: 500; }
+.river .eta { fill: var(--river); font-family: var(--mono); font-size: 11px; }
+
+/* dam table */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+th { text-align: left; font-weight: 500; color: var(--ink-3); font-size: .75rem; letter-spacing: .04em; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 9px 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+td.r, th.r { text-align: right; }
+tr:last-child td { border-bottom: 0; }
+.bar { position: relative; height: 8px; background: var(--surface-2); border-radius: 4px; min-width: 80px; }
+.bar i { position: absolute; inset: 0 auto 0 0; border-radius: 4px; background: var(--sev); }
+.bar b { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); left: 100%; }
+.spark { display: block; }
+
+/* rain chart */
+.chart svg { display: block; width: 100%; height: auto; }
+.chart text { fill: var(--ink-3); font-family: var(--mono); font-size: 10px; }
+.districts { display: grid; gap: 6px; margin-top: 14px; }
+.district { display: grid; grid-template-columns: 7.5em 1fr 4.5em; gap: 10px; align-items: center; font-size: .86rem; }
+.district .bar i { background: var(--river); }
+
+/* roads */
+.roads { list-style: none; margin: 0; padding: 0; display: grid; }
+.roads li { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.roads li:last-child { border-bottom: 0; }
+.roads .depth { font-family: var(--mono); font-size: .9rem; text-align: right; }
+.roads .where { font-size: .8rem; color: var(--ink-2); }
+
+/* steps */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; counter-reset: s; }
+.step { padding: 12px 14px; border-left: 3px solid var(--river); background: var(--surface); border-radius: 0 6px 6px 0; }
+.step h3::before { counter-increment: s; content: counter(s) ". "; color: var(--river); }
+.step p { font-size: .85rem; color: var(--ink-2); margin-top: 2px; }
+
+/* directory */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chip { font: inherit; font-size: .84rem; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); padding: 5px 12px; border-radius: 999px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.search { font: inherit; font-size: .88rem; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); min-width: 0; flex: 1 1 180px; width: 100%; max-width: 340px; }
+.tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 14px; }
+.tool { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 6px; }
+.tool .meta { display: flex; justify-content: space-between; gap: 8px; font-size: .75rem; color: var(--ink-3); }
+.tool .cat { color: var(--river); font-weight: 600; }
+.tool p { font-size: .86rem; color: var(--ink-2); }
+.tool .go { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: .84rem; }
+.tool .go a { font-weight: 500; text-decoration: none; }
+.tool .go a:hover { text-decoration: underline; }
+.tool .note { font-size: .78rem; color: var(--warn); }
+.empty { color: var(--ink-2); padding: 12px 0; }
+footer { font-size: .8rem; color: var(--ink-3); border-top: 1px solid var(--line); padding-top: 14px; }
+/* tabs */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); overflow-x: auto; margin-top: -12px; }
+.tabs a { font-family: var(--display); font-weight: 600; font-size: 1rem; color: var(--ink-2); text-decoration: none; padding: 10px 14px; border-bottom: 3px solid transparent; margin-bottom: -1px; white-space: nowrap; }
+.tabs a:hover { color: var(--ink); }
+.tabs a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--river); }
+.view { display: grid; gap: 28px; }
+.view[hidden] { display: none; }
+
+/* sky scopes: instrument screens stay dark in both themes on purpose */
+.sky { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 900px) { .sky { grid-template-columns: 1fr; } }
+.scope { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; }
+.screen { position: relative; background: #071217; aspect-ratio: 4 / 3; max-width: 100%; }
+.screen canvas { display: block; width: 100%; height: 100%; }
+.screen .tag { position: absolute; left: 10px; top: 10px; font-family: var(--mono); font-size: .72rem; color: #b8d4dc; background: #071217cc; border: 1px solid #2a4a55; padding: 2px 8px; border-radius: 4px; }
+.scope-body { padding: 14px 16px; display: grid; gap: 6px; align-content: start; }
+.scope-body p { font-size: .86rem; color: var(--ink-2); }
+.scope .go { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .86rem; margin-top: 4px; }
+.scope .go a { font-weight: 500; text-decoration: none; }
+.scope .go a:hover { text-decoration: underline; }
+.hot-section { border-top: 2px solid var(--ink); padding-top: 18px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+<style>body { margin: 0; } [hidden] { display: none !important; } img { max-width: 100%; }</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>ดูฝน <span class="en">Doo Foun</span></h1>
+      <p>เช็กฝน ดูน้ำ หาทางเลี่ยง ก่อนออกจากบ้าน รวมไว้ที่เดียว</p>
+    </div>
+    <div class="stamp">
+      <span class="sample">ต้นแบบ · ภาพและตัวเลขเป็นตัวอย่าง</span><br>
+      อัปเดตล่าสุด <span class="num" id="stamp"></span>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="เมนูหลัก">
+    <a href="#home" data-tab="home">หน้าแรก</a>
+    <a href="#dash" data-tab="dash">Dashboard</a>
+    <a href="#tools" data-tab="tools">เครื่องมือทั้งหมด</a>
+  </nav>
+
+  <main class="views">
+    <div class="view" data-view="home">
+      <section aria-labelledby="h-sky">
+        <div class="section-head">
+          <div><h2 id="h-sky">มองจากฟ้า</h2>
+          <p class="muted" style="font-size:.85rem">ลม ฝน และเมฆ ดูภาพจริงได้จากลิงก์ใต้แต่ละช่อง</p></div>
+          <span class="sample">ภาพประกอบ ไม่ใช่ภาพจริง</span>
+        </div>
+        <div class="sky">
+          <article class="scope">
+            <div class="screen"><canvas id="cv-globe" width="480" height="360" aria-hidden="true"></canvas><span class="tag">ลูกโลก · ลมและฝน</span></div>
+            <div class="scope-body">
+              <h3>ลมและฝนทั้งภูมิภาค</h3>
+              <p>ดูพายุและร่องมรสุมที่กำลังเข้าไทยล่วงหน้าหลายวัน</p>
+              <div class="go">
+                <a href="https://www.windy.com" target="_blank" rel="noopener">Windy ↗</a>
+                <a href="https://earth.nullschool.net" target="_blank" rel="noopener">Earth Nullschool ↗</a>
+                <a href="https://sites.research.google/floods" target="_blank" rel="noopener">Google Flood Hub ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="scope">
+            <div class="screen"><canvas id="cv-radar" width="480" height="360" aria-hidden="true"></canvas><span class="tag">เรดาร์ฝน</span></div>
+            <div class="scope-body">
+              <h3>เรดาร์ฝน</h3>
+              <p>กลุ่มฝนที่กำลังตกและทิศทางที่เคลื่อนตัวใน 1–3 ชั่วโมงข้างหน้า</p>
+              <div class="go">
+                <a href="https://weather.tmd.go.th" target="_blank" rel="noopener">กรมอุตุนิยมวิทยา ↗</a>
+                <a href="https://www.windy.com/-Weather-radar-radar" target="_blank" rel="noopener">Windy เรดาร์ ↗</a>
+                <a href="https://weather.bangkok.go.th/rain" target="_blank" rel="noopener">ฝน กทม. ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="scope">
+            <div class="screen"><canvas id="cv-sat" width="480" height="360" aria-hidden="true"></canvas><span class="tag">ภาพดาวเทียม</span></div>
+            <div class="scope-body">
+              <h3>ภาพดาวเทียม</h3>
+              <p>เมฆปกคลุมและพื้นที่น้ำท่วมที่ตรวจจากดาวเทียม</p>
+              <div class="go">
+                <a href="https://flood.gistda.or.th" target="_blank" rel="noopener">GISTDA น้ำท่วม ↗</a>
+                <a href="https://www.windy.com/-Satellite-satellite" target="_blank" rel="noopener">Windy ดาวเทียม ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="h-steps">
+        <div class="section-head"><h2 id="h-steps">เช็กตามลำดับนี้</h2></div>
+        <div class="steps">
+          <div class="step"><h3>ฝนจะตกไหม</h3><p>เรดาร์กรมอุตุฯ หรือ Windy ดูกลุ่มฝนที่กำลังเข้าพื้นที่ใน 1–3 ชั่วโมงข้างหน้า</p></div>
+          <div class="step"><h3>น้ำเหนือมาเท่าไหร่</h3><p>ThaiWater ดูการระบายเขื่อนเจ้าพระยาและสถานี C.2 · Google Flood Hub ดูแนวโน้มล่วงหน้าหลายวัน</p></div>
+          <div class="step"><h3>ก่อนออกเดินทาง</h3><p>ดูจุดน้ำท่วมถนนและ CCTV ของ กทม. / กรมทางหลวง แล้วเลือกเส้นทางเลี่ยง</p></div>
+          <div class="step"><h3>ต้องการความช่วยเหลือ</h3><p>โทร 1784 หรือ LINE @1784DDPM แจ้งพิกัดและจำนวนคน · เบอร์อื่นอยู่ท้ายหน้า</p></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="view" data-view="dash" hidden>
+      <section aria-labelledby="h-now">
+        <div class="section-head"><h2 id="h-now">สถานการณ์ตอนนี้</h2><span class="sample">ข้อมูลตัวอย่าง</span></div>
+        <div class="status" id="status"></div>
+      </section>
+
+      <section class="panel river" aria-labelledby="h-river">
+        <div class="section-head">
+          <div><h2 id="h-river">น้ำเหนือจะถึงกรุงเทพฯ เมื่อไหร่</h2>
+          <p class="muted" style="font-size:.85rem">อัตราการไหลตามสถานีหลักบนแม่น้ำเจ้าพระยา และเวลาเดินทางของน้ำโดยประมาณ</p></div>
+          <span class="sample">ข้อมูลตัวอย่าง</span>
+        </div>
+        <svg id="river" viewBox="0 0 1000 190" role="img" aria-label="แผนผังสถานีแม่น้ำเจ้าพระยาจากนครสวรรค์ถึงกรุงเทพฯ"></svg>
+      </section>
+
+      <div class="grid-2">
+        <section class="panel" aria-labelledby="h-dam">
+          <div class="section-head"><h2 id="h-dam">เขื่อนหลักลุ่มเจ้าพระยา</h2><span class="sample">ข้อมูลตัวอย่าง</span></div>
+          <div class="table-wrap"><table id="dams">
+            <thead><tr><th>เขื่อน</th><th>% ความจุ</th><th class="r">น้ำไหลเข้า</th><th class="r">ระบาย</th><th>14 วัน</th></tr></thead>
+            <tbody></tbody>
+          </table></div>
+          <p class="muted" style="font-size:.78rem;margin-top:10px">หน่วย: ล้าน ลบ.ม./วัน · เส้นดำ = ระดับกักเก็บปกติ (100%)</p>
+        </section>
+
+        <section class="panel chart" aria-labelledby="h-rain">
+          <div class="section-head"><h2 id="h-rain">ฝนกรุงเทพฯ 24 ชม.</h2><span class="sample">ข้อมูลตัวอย่าง</span></div>
+          <svg id="rain" viewBox="0 0 420 170" role="img" aria-label="กราฟปริมาณฝนรายชั่วโมง"></svg>
+          <div class="districts" id="districts"></div>
+        </section>
+      </div>
+
+      <section class="panel" aria-labelledby="h-roads">
+        <div class="section-head"><h2 id="h-roads">ถนนมีน้ำท่วมขัง</h2><span class="sample">ข้อมูลตัวอย่าง</span></div>
+        <ul class="roads" id="roads"></ul>
+      </section>
+    </div>
+
+    <div class="view" data-view="tools" hidden>
+      <section aria-labelledby="h-tools">
+        <div class="section-head">
+          <h2 id="h-tools">เครื่องมือทั้งหมด</h2>
+          <div class="filters" id="filters" role="group" aria-label="กรองตามหมวด"></div>
+        </div>
+        <input class="search" id="q" type="search" placeholder="ค้นหา เช่น CCTV, เขื่อน, คลอง" aria-label="ค้นหาเครื่องมือ">
+        <div class="tools" id="tools"></div>
+      </section>
+    </div>
+  </main>
+
+  <section aria-labelledby="h-hot" class="hot-section">
+    <div class="section-head"><h2 id="h-hot">สายด่วน</h2><span class="muted" style="font-size:.85rem">กดคัดลอกเบอร์ หรือโทรจากมือถือ</span></div>
+    <div class="hotlines" id="hotlines"></div>
+  </section>
+
+  <footer>
+    ต้นแบบหน้าเว็บ · ลิงก์ทั้งหมดพาไปยังเว็บไซต์ต้นทาง · ภาพในหน้าแรกเป็นภาพประกอบ และตัวเลขใน Dashboard เป็นข้อมูลตัวอย่าง ยังไม่ได้ดึงจากแหล่งจริง
+  </footer>
+</div>
+
+<script>
+const HOTLINES = [
+  { n: "1784", who: "ปภ.", what: "ขอความช่วยเหลือ / อพยพ · LINE @1784DDPM", primary: true },
+  { n: "1669", who: "สพฉ.", what: "เจ็บป่วยฉุกเฉิน" },
+  { n: "1586", alt: "1146", who: "กรมทางหลวง / ทางหลวงชนบท", what: "สอบถามเส้นทาง" },
+  { n: "1129", alt: "1130", who: "กฟภ. / กฟน.", what: "ไฟฟ้า ต่างจังหวัด / กทม.-นนท์-สมุทรปราการ" },
+];
+
+const CATS = {
+  water: "น้ำเหนือ / เขื่อน",
+  rain: "ฝน / เรดาร์",
+  road: "ถนน / CCTV",
+  bkk: "กรุงเทพฯ",
+};
+
+const TOOLS = [
+  { cat: "water", name: "ThaiWater One Map", org: "สสน. / ภาครัฐ", desc: "ปริมาณน้ำในเขื่อน อัตราการระบาย และระดับน้ำตามสถานีสำคัญ ใช้คาดว่าน้ำจะถึงพื้นที่ท้ายน้ำเมื่อไหร่", links: [["เปิด ThaiWater", "https://www.thaiwater.net/new4all"], ["แผนที่หลายชั้นข้อมูล", "https://twa.thaiwater.net/th/map/basic"]] },
+  { cat: "water", name: "Google Flood Hub", org: "Google", desc: "พยากรณ์น้ำล้นตลิ่งตามลุ่มน้ำล่วงหน้าหลายวัน อ่านง่าย เหมาะกับคนทั่วไป", links: [["เปิด Flood Hub", "https://sites.research.google/floods"]] },
+  { cat: "rain", name: "เรดาร์ฝน กรมอุตุนิยมวิทยา", org: "กรมอุตุนิยมวิทยา", desc: "เรดาร์และพยากรณ์อากาศทางการ มีแอป Thai Weather", links: [["เปิดเว็บกรมอุตุฯ", "https://weather.tmd.go.th"]] },
+  { cat: "rain", name: "Windy", org: "เอกชน", desc: "เรดาร์ฝนและแบบจำลองลม-ฝนแบบเคลื่อนไหว ดูทิศทางกลุ่มฝน", links: [["เปิด Windy", "https://www.windy.com"]] },
+  { cat: "rain", name: "แอปเช็คน้ำ GISTDA", org: "GISTDA", desc: "ติดตามพื้นที่น้ำท่วมจากภาพดาวเทียม มีทั้งเว็บและแอปมือถือ", links: [["เปิดเว็บ GISTDA", "https://flood.gistda.or.th"]], note: "แอป: ค้นหา \"เช็คน้ำ\" ใน App Store / Play Store" },
+  { cat: "rain", name: "Earth Nullschool", org: "เอกชน", desc: "ลูกโลกแสดงลม ฝน และพายุทั่วโลกแบบเคลื่อนไหว", links: [["เปิด Earth", "https://earth.nullschool.net"]] },
+  { cat: "bkk", name: "ปริมาณฝน กทม.", org: "สำนักการระบายน้ำ กทม.", desc: "สถานีวัดน้ำฝนรายเขต แบบเรียลไทม์", links: [["เปิดระบบวัดฝน", "https://weather.bangkok.go.th/rain"]] },
+  { cat: "bkk", name: "น้ำท่วมถนน กทม.", org: "สำนักการระบายน้ำ กทม.", desc: "จุดตรวจวัดระดับน้ำบนถนนทั่วกรุงเทพฯ", links: [["เปิดระบบน้ำท่วมถนน", "https://weather.bangkok.go.th/flood/"]] },
+  { cat: "bkk", name: "อัตราการไหลของคลอง", org: "สำนักการระบายน้ำ กทม.", desc: "แผนที่การไหลของน้ำในคลองสายหลัก บอกว่าคลองไหนระบายทัน", links: [["เปิด KlongMap", "https://weather.bangkok.go.th/KlongMap"]], note: "แนะนำ · ล่มบ่อย ให้กดรีเฟรชหลายครั้ง" },
+  { cat: "road", name: "HDMS กรมทางหลวง", org: "กรมทางหลวง", desc: "CCTV และรายงานพิกัดน้ำท่วมบนทางหลวงทั่วประเทศ", links: [["เปิด dashboard", "https://hdms.doh.go.th/dashboard"]] },
+  { cat: "road", name: "Longdo Traffic", org: "เอกชน", desc: "สภาพจราจร กล้อง CCTV และเหตุการณ์บนถนน", links: [["เปิด Longdo Traffic", "https://traffic.longdo.com"]] },
+  { cat: "road", name: "BMA Traffic CCTV", org: "กทม.", desc: "กล้อง CCTV ของ กทม. ดูก่อนออกเดินทาง", links: [["เปิด BMA Traffic", "https://cpudapp.bangkok.go.th/bmatraffic"]] },
+  { cat: "road", name: "ถนนที่ควรเลี่ยง", org: "รวบรวมโดยผู้ใช้", desc: "รายการถนนที่ควรหลีกเลี่ยงช่วงน้ำท่วม", links: [["เปิดรายการ", "https://claude.ai/artifact/N6umcENfSgoY6GMkhVKwZs"]] },
+];
+
+// ---- sample data (not live) ----
+const STATUS = [
+  { k: "ระดับน้ำเจ้าพระยา สะพานพุทธ", v: "+1.62", u: "ม.รทก.", sev: "watch", s: "เฝ้าระวัง", d: "ตลิ่งป้องกัน +2.80 ม." },
+  { k: "ระบายท้ายเขื่อนเจ้าพระยา", v: "1,850", u: "ลบ.ม./วิ", sev: "warn", s: "เตือนภัย", d: "เพิ่มขึ้น 120 จากเมื่อวาน" },
+  { k: "ฝนสะสม กทม. 24 ชม.", v: "68", u: "มม.", sev: "watch", s: "ฝนหนัก", d: "สูงสุดที่เขตบางเขน" },
+  { k: "ถนนน้ำท่วมขัง กทม.", v: "7", u: "จุด", sev: "normal", s: "รถเล็กผ่านได้ส่วนใหญ่", d: "ลดลง 3 จุดจากเช้านี้" },
+];
+
+const STATIONS = [
+  { name: "C.2 นครสวรรค์", sub: "จุดวัดน้ำเหนือ", flow: 2320, eta: null },
+  { name: "เขื่อนเจ้าพระยา", sub: "ชัยนาท · ระบาย", flow: 1850, eta: "~12–18 ชม." },
+  { name: "อยุธยา", sub: "C.35 บางไทร", flow: 1920, eta: "~1 วัน" },
+  { name: "ปทุมธานี", sub: "ท่าน้ำนนท์", flow: 2010, eta: "~12 ชม." },
+  { name: "กรุงเทพฯ", sub: "สะพานพุทธ", flow: 2060, eta: "~6–8 ชม." },
+];
+
+const DAMS = [
+  { name: "ภูมิพล", pct: 71, inflow: 38.2, out: 22.0, trend: [66,66,67,67,68,68,69,69,69,70,70,70,71,71] },
+  { name: "สิริกิติ์", pct: 84, inflow: 41.5, out: 28.3, trend: [76,77,77,78,79,79,80,81,81,82,83,83,84,84] },
+  { name: "แควน้อยบำรุงแดน", pct: 93, inflow: 6.1, out: 5.4, trend: [88,88,89,89,90,90,91,91,92,92,92,93,93,93] },
+  { name: "ป่าสักชลสิทธิ์", pct: 102, inflow: 27.9, out: 26.1, trend: [90,92,93,95,96,97,98,99,99,100,101,101,102,102] },
+];
+
+const RAIN = [0,0,0,0,0,1,2,0,0,0,0,0,1,3,6,14,19,11,5,2,1,0,0,0];
+const DISTRICTS = [["บางเขน",68],["ดอนเมือง",61],["จตุจักร",54],["หลักสี่",49],["ลาดพร้าว",41]];
+
+const ROADS = [
+  { road: "ถ.วิภาวดีรังสิต ขาออก", where: "หน้า ม.เกษตรศาสตร์", cm: 22, sev: "warn", s: "รถเล็กเลี่ยง" },
+  { road: "ถ.งามวงศ์วาน", where: "แยกบางเขน", cm: 15, sev: "watch", s: "ผ่านได้ช้า" },
+  { road: "ถ.พหลโยธิน", where: "หน้า ร.ร.สารวิทยา", cm: 12, sev: "watch", s: "ผ่านได้ช้า" },
+  { road: "ถ.แจ้งวัฒนะ", where: "แยกหลักสี่", cm: 8, sev: "normal", s: "ผ่านได้" },
+  { road: "ถ.ลาดพร้าว", where: "ซอย 101", cm: 5, sev: "normal", s: "ผ่านได้" },
+];
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmt = (n) => n.toLocaleString("en-US");
+
+$("#stamp").textContent = new Date().toLocaleString("th-TH", { dateStyle: "medium", timeStyle: "short" });
+
+// hotlines
+$("#hotlines").innerHTML = HOTLINES.map((h) => `
+  <div class="hot${h.primary ? " primary" : ""}">
+    <div class="top-row"><span class="n">${h.n}${h.alt ? ` <small>/ ${h.alt}</small>` : ""}</span></div>
+    <span class="who">${esc(h.who)}</span>
+    <span class="what">${esc(h.what)}</span>
+    <div class="acts">
+      <button class="btn" type="button" data-copy="${h.n}">คัดลอก</button>
+      <a class="btn" href="tel:${h.n}">โทร</a>
+    </div>
+  </div>`).join("");
+$("#hotlines").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-copy]");
+  if (!b) return;
+  const done = () => { b.textContent = "คัดลอกแล้ว"; setTimeout(() => (b.textContent = "คัดลอก"), 1500); };
+  navigator.clipboard?.writeText(b.dataset.copy).then(done, () => { b.textContent = b.dataset.copy; });
+});
+
+// status tiles
+$("#status").innerHTML = STATUS.map((s) => `
+  <div class="stat s-${s.sev}">
+    <span class="label" style="text-transform:none;letter-spacing:0">${esc(s.k)}</span>
+    <span class="v">${s.v} <small>${esc(s.u)}</small></span>
+    <span class="pill">${esc(s.s)}</span>
+    <span class="muted" style="font-size:.8rem">${esc(s.d)}</span>
+  </div>`).join("");
+
+// river path
+(function drawRiver() {
+  const svg = $("#river"), W = 1000, x0 = 70, x1 = 930, y = 78;
+  const step = (x1 - x0) / (STATIONS.length - 1);
+  const maxF = 3000; // channel capacity scale for stroke width
+  let out = "";
+  for (let i = 0; i < STATIONS.length - 1; i++) {
+    const a = x0 + i * step, b = a + step, f = STATIONS[i + 1].flow;
+    const w = 4 + (f / maxF) * 14;
+    out += `<line x1="${a}" y1="${y}" x2="${b}" y2="${y}" stroke="var(--river)" stroke-opacity=".35" stroke-width="${w}" stroke-linecap="round"/>`;
+    out += `<text class="eta" x="${(a + b) / 2}" y="${y - 16}" text-anchor="middle">${STATIONS[i + 1].eta} →</text>`;
+  }
+  STATIONS.forEach((s, i) => {
+    const x = x0 + i * step, sev = s.flow >= 2000 ? "var(--warn)" : s.flow >= 1500 ? "var(--watch)" : "var(--normal)";
+    out += `<circle cx="${x}" cy="${y}" r="11" fill="var(--surface)" stroke="${sev}" stroke-width="4"/>`;
+    out += `<text x="${x}" y="${y + 34}" text-anchor="middle" font-size="14" font-weight="600">${esc(s.name)}</text>`;
+    out += `<text class="sub" x="${x}" y="${y + 52}" text-anchor="middle">${esc(s.sub)}</text>`;
+    out += `<text class="flow" x="${x}" y="${y + 74}" text-anchor="middle">${fmt(s.flow)} <tspan class="sub">ลบ.ม./วิ</tspan></text>`;
+  });
+  out += `<text class="sub" x="${x0 - 50}" y="22">ต้นน้ำ</text><text class="sub" x="${x1 + 50}" y="22" text-anchor="end">ปลายน้ำ · อ่าวไทย</text>`;
+  svg.innerHTML = out;
+})();
+
+// sparkline helper
+function spark(vals, w = 90, h = 26) {
+  const lo = Math.min(...vals) - 1, hi = Math.max(...vals) + 1;
+  const px = (i) => (i / (vals.length - 1)) * (w - 4) + 2;
+  const py = (v) => h - 3 - ((v - lo) / (hi - lo)) * (h - 6);
+  const pts = vals.map((v, i) => `${px(i).toFixed(1)},${py(v).toFixed(1)}`).join(" ");
+  const last = vals.length - 1;
+  return `<svg class="spark" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true">
+    <polygon points="${px(0)},${h} ${pts} ${px(last)},${h}" fill="var(--river)" fill-opacity=".12"/>
+    <polyline points="${pts}" fill="none" stroke="var(--river)" stroke-width="1.5"/>
+    <circle cx="${px(last)}" cy="${py(vals[last])}" r="2.5" fill="var(--river)"/></svg>`;
+}
+
+// dams
+const damSev = (p) => (p >= 100 ? "crit" : p >= 90 ? "warn" : p >= 80 ? "watch" : "normal");
+$("#dams tbody").innerHTML = DAMS.map((d) => `
+  <tr class="s-${damSev(d.pct)}">
+    <td style="font-weight:600">${esc(d.name)}</td>
+    <td><div style="display:flex;align-items:center;gap:10px">
+      <div class="bar" style="flex:1"><i style="width:${Math.min(d.pct, 100) / 1.1}%"></i><b style="left:${100 / 1.1}%"></b></div>
+      <span class="num" style="width:3.2em;text-align:right">${d.pct}%</span></div></td>
+    <td class="r num">${d.inflow.toFixed(1)}</td>
+    <td class="r num">${d.out.toFixed(1)}</td>
+    <td>${spark(d.trend)}</td>
+  </tr>`).join("");
+
+// rain chart
+(function drawRain() {
+  const W = 420, H = 170, L = 30, R = 8, T = 10, B = 24;
+  const max = 20, ticks = [0, 5, 10, 15, 20];
+  const bw = (W - L - R) / RAIN.length;
+  const ys = (v) => T + (H - T - B) * (1 - v / max);
+  let out = "";
+  ticks.forEach((t) => {
+    out += `<line x1="${L}" x2="${W - R}" y1="${ys(t)}" y2="${ys(t)}" stroke="var(--line)" stroke-width="1"/>`;
+    out += `<text x="${L - 6}" y="${ys(t) + 3}" text-anchor="end">${t}</text>`;
+  });
+  const peak = RAIN.indexOf(Math.max(...RAIN));
+  RAIN.forEach((v, i) => {
+    const x = L + i * bw + 1.5, h = ys(0) - ys(v);
+    if (v > 0) out += `<rect x="${x}" y="${ys(v)}" width="${bw - 3}" height="${h}" rx="1.5" fill="var(--river)" fill-opacity="${i === peak ? 1 : 0.55}"/>`;
+    if (i % 3 === 0) out += `<text x="${x + (bw - 3) / 2}" y="${H - 8}" text-anchor="middle">${String(i).padStart(2, "0")}</text>`;
+  });
+  out += `<text x="${L + peak * bw + bw / 2}" y="${ys(RAIN[peak]) - 4}" text-anchor="middle" style="fill:var(--ink)">${RAIN[peak]} มม.</text>`;
+  out += `<text x="${L}" y="${T - 1}" style="font-size:9px">มม./ชม.</text>`;
+  $("#rain").innerHTML = out;
+  const dmax = DISTRICTS[0][1];
+  $("#districts").innerHTML = `<span class="label" style="text-transform:none;letter-spacing:0">ฝนสะสมสูงสุดรายเขต</span>` + DISTRICTS.map(([n, v]) => `
+    <div class="district"><span>${esc(n)}</span><div class="bar"><i style="width:${(v / dmax) * 100}%"></i></div><span class="num" style="text-align:right">${v} มม.</span></div>`).join("");
+})();
+
+// roads
+$("#roads").innerHTML = ROADS.map((r) => `
+  <li class="s-${r.sev}">
+    <span style="font-weight:600">${esc(r.road)}</span>
+    <span class="depth">${r.cm} ซม.</span>
+    <span class="where">${esc(r.where)}</span>
+    <span class="pill" style="justify-self:end">${esc(r.s)}</span>
+  </li>`).join("");
+
+// directory
+let active = "all";
+try { active = localStorage.getItem("fw-cat") || "all"; } catch (e) {}
+function renderFilters() {
+  const opts = [["all", "ทั้งหมด"], ...Object.entries(CATS)];
+  $("#filters").innerHTML = opts.map(([k, v]) => `<button type="button" class="chip" data-cat="${k}" aria-pressed="${k === active}">${esc(v)}</button>`).join("");
+}
+function renderTools() {
+  const q = $("#q").value.trim().toLowerCase();
+  const list = TOOLS.filter((t) => (active === "all" || t.cat === active) &&
+    (!q || [t.name, t.org, t.desc, CATS[t.cat]].join(" ").toLowerCase().includes(q)));
+  $("#tools").innerHTML = list.length ? list.map((t) => `
+    <article class="tool">
+      <div class="meta"><span class="cat">${esc(CATS[t.cat])}</span><span>${esc(t.org)}</span></div>
+      <h3>${esc(t.name)}</h3>
+      <p>${esc(t.desc)}</p>
+      <div>
+        ${t.note ? `<div class="note">${esc(t.note)}</div>` : ""}
+        <div class="go">${t.links.map(([l, u]) => `<a href="${u}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join("")}</div>
+      </div>
+    </article>`).join("") : `<p class="empty">ไม่พบเครื่องมือที่ตรงกับคำค้น</p>`;
+}
+$("#filters").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-cat]");
+  if (!b) return;
+  active = b.dataset.cat;
+  try { localStorage.setItem("fw-cat", active); } catch (e) {}
+  renderFilters(); renderTools();
+});
+$("#q").addEventListener("input", renderTools);
+renderFilters(); renderTools();
+
+// ---- tabs (bare #hash tokens) ----
+const VIEWS = ["home", "dash", "tools"];
+function showView() {
+  const h = location.hash.slice(1);
+  const v = VIEWS.includes(h) ? h : "home";
+  document.querySelectorAll(".view").forEach((el) => (el.hidden = el.dataset.view !== v));
+  document.querySelectorAll(".tabs a").forEach((a) => {
+    if (a.dataset.tab === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  });
+}
+window.addEventListener("hashchange", showView);
+showView();
+
+// ---- sky illustrations (decorative, generated) ----
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function rng(seed) { return () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646; }
+function makeNoise(seed, size = 64) {
+  const r = rng(seed), g = Array.from({ length: size * size }, r);
+  const at = (x, y) => g[((y % size + size) % size) * size + ((x % size + size) % size)];
+  const sm = (t) => t * t * (3 - 2 * t);
+  const n = (x, y) => {
+    const xi = Math.floor(x), yi = Math.floor(y), xf = sm(x - xi), yf = sm(y - yi);
+    const a = at(xi, yi), b = at(xi + 1, yi), c = at(xi, yi + 1), d = at(xi + 1, yi + 1);
+    return a + (b - a) * xf + (c - a) * yf + (a - b - c + d) * xf * yf;
+  };
+  return (x, y) => { let v = 0, amp = 0.5, f = 1; for (let o = 0; o < 5; o++) { v += amp * n(x * f, y * f); amp /= 2; f *= 2; } return v; };
+}
+
+// globe: orthographic graticule, wind streaks, Bangkok marker
+(function globe() {
+  const cv = document.getElementById("cv-globe"), ctx = cv.getContext("2d");
+  const W = cv.width, H = cv.height, R = 150, cx = W / 2, cy = H / 2 + 6, rad = Math.PI / 180, phi0 = 14 * rad;
+  const r = rng(7);
+  const parts = Array.from({ length: 260 }, () => ({ lon: r() * 360, lat: (r() * 2 - 1) * 70, age: r() * 80 }));
+  const proj = (lon, lat, lam0) => {
+    const p = lat * rad, l = lon * rad - lam0;
+    const cosc = Math.sin(phi0) * Math.sin(p) + Math.cos(phi0) * Math.cos(p) * Math.cos(l);
+    return { x: cx + R * Math.cos(p) * Math.sin(l), y: cy - R * (Math.cos(phi0) * Math.sin(p) - Math.sin(phi0) * Math.cos(p) * Math.cos(l)), vis: cosc > 0 };
+  };
+  // easterly trades near equator, westerlies mid-latitude, a monsoon swirl over the Bay of Bengal
+  const wind = (lon, lat) => {
+    let u = Math.abs(lat) < 28 ? -0.35 : 0.5, v = 0;
+    const dx = lon - 92, dy = lat - 15, d2 = dx * dx + dy * dy;
+    if (d2 < 400) { const k = (1 - d2 / 400) * 1.4; u += -dy / 20 * k; v += dx / 20 * k; }
+    return [u, v];
+  };
+  let t = 0;
+  function frame() {
+    const lam0 = (100 + 28 * Math.sin(t / 900)) * rad;
+    ctx.fillStyle = "#071217"; ctx.fillRect(0, 0, W, H);
+    const g = ctx.createRadialGradient(cx - 40, cy - 50, 20, cx, cy, R);
+    g.addColorStop(0, "#15394a"); g.addColorStop(1, "#0b2230");
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
+    ctx.strokeStyle = "#3f7488"; ctx.lineWidth = 1; ctx.stroke();
+    ctx.strokeStyle = "rgba(120,180,200,.18)";
+    const line = (pts) => { ctx.beginPath(); let pen = false; for (const q of pts) { if (q.vis) { pen ? ctx.lineTo(q.x, q.y) : ctx.moveTo(q.x, q.y); pen = true; } else pen = false; } ctx.stroke(); };
+    for (let lon = 0; lon < 360; lon += 15) line(Array.from({ length: 61 }, (_, i) => proj(lon, -90 + i * 3, lam0)));
+    for (let lat = -75; lat <= 75; lat += 15) line(Array.from({ length: 121 }, (_, i) => proj(i * 3, lat, lam0)));
+    for (const p of parts) {
+      const [u, v] = wind(p.lon, p.lat), a = proj(p.lon, p.lat, lam0);
+      p.lon = (p.lon + u + 360) % 360; p.lat += v; p.age++;
+      const b = proj(p.lon, p.lat, lam0);
+      if (a.vis && b.vis) { ctx.strokeStyle = `rgba(160,230,240,${0.25 + 0.5 * Math.min(1, Math.hypot(u, v))})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x + (b.x - a.x) * 3, b.y + (b.y - a.y) * 3); ctx.stroke(); }
+      if (p.age > 90 || Math.abs(p.lat) > 75) { p.lon = r() * 360; p.lat = (r() * 2 - 1) * 70; p.age = 0; }
+    }
+    const bk = proj(100.5, 13.75, lam0);
+    if (bk.vis) {
+      const pulse = reduce ? 6 : 4 + (t % 60) / 6;
+      ctx.beginPath(); ctx.arc(bk.x, bk.y, pulse, 0, Math.PI * 2); ctx.strokeStyle = "rgba(255,170,90,.7)"; ctx.stroke();
+      ctx.beginPath(); ctx.arc(bk.x, bk.y, 3, 0, Math.PI * 2); ctx.fillStyle = "#ffae5c"; ctx.fill();
+      ctx.font = "12px 'IBM Plex Sans Thai', sans-serif"; ctx.fillStyle = "#ffd3a8"; ctx.fillText("กรุงเทพฯ", bk.x + 8, bk.y - 6);
+    }
+    t++;
+    if (!reduce) requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+// radar: range rings, echoes coloured on a dBZ-like scale, rotating sweep
+(function radar() {
+  const cv = document.getElementById("cv-radar"), ctx = cv.getContext("2d");
+  const W = cv.width, H = cv.height, cx = W / 2, cy = H / 2 + 6, R = 150, noise = makeNoise(11);
+  const echo = document.createElement("canvas"); echo.width = W; echo.height = H;
+  const ec = echo.getContext("2d"), img = ec.createImageData(W, H);
+  const scale = [[0.52, [46, 160, 80]], [0.6, [120, 200, 60]], [0.68, [240, 210, 40]], [0.75, [245, 130, 40]], [0.82, [220, 50, 50]]];
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const d = Math.hypot(x - cx, y - cy); if (d > R) continue;
+    const v = noise(x / 55 + 3, y / 55) * 0.9 + noise(x / 18, y / 18 + 9) * 0.25;
+    let c = null; for (const [th, col] of scale) if (v > th) c = col;
+    if (c) { const i = (y * W + x) * 4; img.data.set([...c, 190], i); }
+  }
+  ec.putImageData(img, 0, 0);
+  let a = 0;
+  function frame() {
+    ctx.fillStyle = "#071217"; ctx.fillRect(0, 0, W, H);
+    ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.clip();
+    ctx.fillStyle = "#0a1d22"; ctx.fillRect(0, 0, W, H);
+    ctx.drawImage(echo, 0, 0);
+    const sw = ctx.createConicGradient ? ctx.createConicGradient(a - 1.2, cx, cy) : null;
+    if (sw) { sw.addColorStop(0, "rgba(90,220,160,0)"); sw.addColorStop(0.19, "rgba(90,220,160,.28)"); sw.addColorStop(0.191, "rgba(90,220,160,0)"); ctx.fillStyle = sw; ctx.fillRect(0, 0, W, H); }
+    ctx.restore();
+    ctx.strokeStyle = "rgba(120,200,180,.3)"; ctx.lineWidth = 1;
+    for (let k = 1; k <= 3; k++) { ctx.beginPath(); ctx.arc(cx, cy, (R * k) / 3, 0, Math.PI * 2); ctx.stroke(); }
+    ctx.beginPath(); ctx.moveTo(cx - R, cy); ctx.lineTo(cx + R, cy); ctx.moveTo(cx, cy - R); ctx.lineTo(cx, cy + R); ctx.stroke();
+    ctx.font = "10px 'IBM Plex Mono', monospace"; ctx.fillStyle = "rgba(160,210,200,.8)";
+    ["80", "160", "240 กม."].forEach((l, k) => ctx.fillText(l, cx + 4, cy - (R * (k + 1)) / 3 + 12));
+    // legend
+    scale.forEach(([, c], k) => { ctx.fillStyle = `rgb(${c})`; ctx.fillRect(W - 22, H - 24 - k * 14, 12, 12); });
+    ctx.fillStyle = "rgba(160,210,200,.8)"; ctx.fillText("หนัก", W - 52, H - 70); ctx.fillText("เบา", W - 46, H - 14);
+    a += 0.025;
+    if (!reduce) requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+// satellite: fractal cloud field drifting west over sea and land
+(function satellite() {
+  const cv = document.getElementById("cv-sat"), ctx = cv.getContext("2d");
+  const W = cv.width, H = cv.height, clouds = makeNoise(23), land = makeNoise(5);
+  const base = document.createElement("canvas"); base.width = W; base.height = H;
+  const bc = base.getContext("2d"), bi = bc.createImageData(W, H);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const v = land(x / 90, y / 90) + (x - W * 0.45) / W * 0.4, i = (y * W + x) * 4;
+    bi.data.set(v > 0.55 ? [38 + v * 30, 62 + v * 30, 40, 255] : [8, 26, 40, 255], i);
+  }
+  bc.putImageData(bi, 0, 0);
+  const CW = W * 2, cl = document.createElement("canvas"); cl.width = CW; cl.height = H;
+  const cc = cl.getContext("2d"), ci = cc.createImageData(CW, H);
+  for (let y = 0; y < H; y++) for (let x = 0; x < CW; x++) {
+    // wrap-around in x so the drift loops seamlessly
+    const f = x / CW, v = clouds(x / 70, y / 70) * (1 - f) + clouds((x - CW) / 70, y / 70) * f;
+    const a = Math.max(0, Math.min(1, (v - 0.45) * 3.2)), i = (y * CW + x) * 4;
+    ci.data.set([235, 242, 245, a * 235], i);
+  }
+  cc.putImageData(ci, 0, 0);
+  let off = 0;
+  function frame() {
+    ctx.drawImage(base, 0, 0);
+    const o = off % CW;
+    ctx.drawImage(cl, -o, 0); ctx.drawImage(cl, CW - o, 0);
+    ctx.strokeStyle = "rgba(255,255,255,.12)"; ctx.lineWidth = 1;
+    for (let x = 60; x < W; x += 60) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+    for (let y = 60; y < H; y += 60) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    ctx.font = "10px 'IBM Plex Mono', monospace"; ctx.fillStyle = "rgba(200,225,235,.75)";
+    ctx.fillText("IR · 10.4 µm", W - 86, H - 10);
+    off += 0.35;
+    if (!reduce) requestAnimationFrame(frame);
+  }
+  frame();
+})();
+</script>
+</body>
+</html>
