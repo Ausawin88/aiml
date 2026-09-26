@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "weather"
+version = "0.1.0"
+description = "Weather data fetching and baseline forecasting"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+weather = "weather.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
